@@ -5,16 +5,17 @@ const LabelInput = (props) => {
         <StyleLabelInputBox>
             <StyleLabel id={props.id} name={props.name}>
                 {props.text}
+                <StyleInput
+                    name={props.name}
+                    type={props.type}
+                    id={props.id}
+                    onChange={props.onChange}
+                    value={props.value}
+                    checked={props.checked}
+                    onClick={props.onClick}
+                    // checked={this.state.selectedOption === "income"}
+                ></StyleInput>
             </StyleLabel>
-            <StyleInput
-                name={props.name}
-                placeholder={props.text}
-                type={props.type}
-                id={props.id}
-                onChange={props.onChange}
-                value={props.value}
-                // checked={this.state.selectedOption === "income"}
-            ></StyleInput>
         </StyleLabelInputBox>
     );
 };

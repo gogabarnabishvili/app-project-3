@@ -1,7 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Filter from "./components/filters/Filters";
-
+import SignIn from "./components/sign-in/SignIn";
+import ExpenseFeed from "./components/expenses-feed/ExoensesFeed";
+import AddExpense from "./components/addExpense/AddExpense";
+import SignUp from "./components/sign-up/SiginUp";
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -12,11 +14,11 @@ import {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            {/* <Route path="/" element={<SgnIn />} />
-          <Route path="/signup" element={<SignUp />} /> */}
-            <Route path="/" element={<Filter />} />
-            {/* <Route path="/add-expense" element={<AddExpense />} />
-          <Route path="/edit-expense/:id" element={<AddExpense />} /> */}
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/ExpenseFeed" element={<ExpenseFeed />} />
+            <Route path="/" element={<AddExpense />} />
+            {/* <Route path="/edit-expense/:id" element={<AddExpense />} /> */}
         </>
     )
 );

@@ -2,13 +2,14 @@ import { StyleFilterForm, StyleLabelBox } from "./StyleFilters";
 import LabelInput from "../label-input/LabelInput";
 import SelectOption from "../select/Select";
 import { useState } from "react";
+import { useContext } from "react";
 import { ExpensesFeedContext } from "../expenses-feed/ExpensesFeedContext";
 
 const posts = ["income", "expense", "market", "invois"];
 
 const Filters = () => {
     const { filters, setFilters } = useContext(ExpensesFeedContext);
-
+    console.log("filter", filters);
     const [selectedDate, setSelectedDate] = useState("");
     const [minAmount, setMinAmount] = useState(undefined);
     const [maxAmount, setMaxAmount] = useState(undefined);
@@ -21,13 +22,23 @@ const Filters = () => {
     const onCategoryChange = (e) => setSelectedCategory(e.target.value);
     const onTypeChange = (e) => setSelectedType(e.target.value);
 
-    console.log(
-        selectedDate,
-        minAmount,
-        maxAmount,
-        selectedCategory,
-        selectedType
-    );
+    const onFiltersSubmit = () => {
+        setFilters({
+            ...filters,
+            selectedDate,
+            selectedCategory,
+            minAmount,
+            maxAmount,
+        });
+    };
+
+    // console.log(
+    //     selectedDate,
+    //     minAmount,
+    //     maxAmount,
+    //     selectedCategory,
+    //     selectedType
+    // );
     return (
         <StyleFilterForm>
             <LabelInput
@@ -43,7 +54,6 @@ const Filters = () => {
                     type="radio"
                     name="type"
                     text="income"
-
                     // checked={selectedType === "expense"}
                     // onChange={setSelectedType(selectedType === "expense")}
                 />
@@ -78,7 +88,7 @@ const Filters = () => {
                     value="serch"
                     type="button"
                     id="serchBtn"
-                    onClik={Filters}
+                    onClick={onFiltersSubmit}
                 />
             </StyleLabelBox>
         </StyleFilterForm>
